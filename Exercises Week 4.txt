@@ -1,0 +1,142 @@
+/* This  program prints onto the screen the following sequence: 5 4 3 2 1 0 -1 -2 -3 -4 -5 */
+
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int n = 5;
+
+	while (n > -6)
+	{
+		cout << n << " ";
+		--n;
+	}
+
+
+	return 0;
+}
+
+
+/* This  program asks a number from the user and 
+then prints "Hello world" the number of times the user set the number.
+Then make loop that prints out the following sequence:
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 */
+
+#include <iostream>
+using namespace std;
+
+int main()
+{
+	int n, 
+		o = 1, 
+		p = 16;
+
+	cout << "Give an Number: " << endl;
+	cin >> n;
+
+	while (n > 0)
+	{
+		cout << "Hello world!" << endl;
+		--n;
+
+	} 
+	
+	while (o < p)
+	{
+		cout << o << " ";
+		++o;
+	}
+
+	return 0;
+}
+
+
+
+/* This  program calcutes Fahrenheits from celcius and vice versa. 
+
+Formula
+	F = (C *1.8) + 32
+	C = (F − 32) / 1.8 */
+
+#include <iostream>
+using namespace std;
+
+int main()
+{	
+	string unit;
+	float temp, c, f;
+
+	cout << "Set Unit C for Celsius and F for Fahrenheit  " << endl;
+	cin >> unit;
+
+	cout << "Give the temperature: " << endl;
+	cin >> temp;
+
+	f = (temp * 1.8) + 32;
+	c = (temp - 32) / 1.8;
+
+	if (unit == "C")
+		
+		cout << "Temperature is " << f << " Fahrenheit" << endl;
+
+	else if (unit == "F")
+		
+		cout << "Temperature is " << c << " Celsius" << endl;
+
+	else
+		cout << "Error in the unit, recheck!!!" << endl;
+
+
+	return 0;
+}
+
+
+
+/* This  program calculates the total tax amount based on income. 
+ Community tax19,75% from income and government tax */
+
+#include <iostream>
+using namespace std;
+
+int main()
+{	
+	float
+		income,
+		comtax = 19.75,
+		govtax,
+		taxc,
+		taxg,
+		total;
+
+	cout << "What is your income?" << endl;
+	cin >> income;
+
+	
+	if ((income >= 16900) && (income <= 25300))
+		govtax = 6.25;
+
+	else if ((income >= 25301) && (income <= 41200))
+		govtax = 17.5;
+
+	else if ((income >= 41201) && (73100))
+		govtax = 21.5;
+
+	else if (income >= 73101)
+		govtax = 31.5;
+
+	else
+		govtax = 0; // assumed government tax as 0% for incomes less than 16900
+
+
+	taxc = (income * comtax) / 100;
+	taxg = (income * govtax) / 100;
+	total = taxc + taxg;
+
+	cout << "You pay " << taxc << " euros in community tax." << endl;
+	cout << "You pay " << taxg << " in government income tax." << endl;
+	cout << "Your total tax amount is " << total << "." << endl;
+
+
+	return 0;
+}

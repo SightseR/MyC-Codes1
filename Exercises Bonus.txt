@@ -1,0 +1,521 @@
+/*
+This is a scoring program of task 3 the official competition version by 
+removing the highest and lowest value from the judge's points 
+(the middle 3 judge's points are added together and jump length x 0.9 is added to this)
+*/
+
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+
+int main()
+{
+
+    float length1, totals = 0, maxpoint = 0, minpoint = 10000;
+    const int point = 5;
+    float judge[point];
+
+	//input jump length
+    cout << "Lenght of the jump: ";
+    cin >> length1;			
+
+	// inputs for points of judges
+    for (int i = 0; i < point; i++)		
+    {
+        cout << "Judge " << i + 1 << " points: ";
+        cin >> judge[i];
+        totals = totals + judge[i];
+    }
+
+	//find the max point
+    for (int j = 0; j < point; j++)		
+    {
+        if (maxpoint < judge[j])
+            maxpoint = judge[j];
+    }
+
+		//find the min point
+    for (int k = 0; k < point; k++)
+    {
+        if (minpoint > judge[k])
+            minpoint = judge[k];
+    }
+
+	//total value will be calculated by sum all points and substract the max and min value from it and then added  + (jump length * 0.9)
+    totals = totals - maxpoint - minpoint + (length1 * 0.9);
+
+	//result
+    cout << "Jump points: " << totals;
+
+    return 0;
+}
+
+
+
+
+/* 
+Roman number converter
+*/
+
+
+#include<iostream>
+#include<string>
+
+using namespace std;
+
+//this subfunction check the entered characters are real roman numerals
+int romancheck(string roman1)
+{
+	int length, check1 = 0, total = 0;
+
+	length = roman1.length();
+
+
+	for (int i = 0; i < length; i++)
+	{
+		if (!(roman1[i] == 'I' ||
+			roman1[i] == 'V' ||
+			roman1[i] == 'X' ||
+			roman1[i] == 'L' ||
+			roman1[i] == 'C' ||
+			roman1[i] == 'D' ||
+			roman1[i] == 'M'))
+
+			check1++;
+	}
+
+	return (check1);
+}
+
+//here all values related to the roman numerals are sum together. I=1, V=5, X=10, L=50, C=100, D=500, M=1000
+int sumromannum(string roman1)
+{
+	int length, total = 0;
+
+	length = roman1.length();
+
+	for (int i = 0; i < length; i++)
+
+	{
+
+		if (roman1[i] == 'I')
+			total = total + 1;
+
+		else if (roman1[i] == 'V')
+			total = total + 5;
+
+		else if (roman1[i] == 'X')
+			total = total + 10;
+
+		else if (roman1[i] == 'L')
+			total = total + 50;
+	
+		else if (roman1[i] == 'C')
+			total = total + 100;
+
+		else if (roman1[i] == 'D')
+			total = total + 500;
+
+		else if (roman1[i] == 'M')
+			total = total + 1000;
+
+		else total = total + 0;
+
+	}
+
+	return (total);
+}
+
+
+//here cheking the roman numerals couples which are required to substract value from orginal value. 
+//IV=5-1, IX=10-1, XL=50-10, XC=100-10, CD=500-100, CM=1000-100
+
+int subromannum(string roman1, int total)
+{
+
+	int length;
+
+	length = roman1.length();
+
+	for (int i = 1; i < length; i++)
+
+	{
+		if (roman1[i] == 'V' && roman1[i - 1] == 'I')
+			total = total - 2;
+
+		else if (roman1[i] == 'X' && roman1[i - 1] == 'I')
+			total = total - 2;
+
+		else if (roman1[i] == 'L' && roman1[i - 1] == 'X')
+			total = total - 20;
+
+		else if (roman1[i] == 'C' && roman1[i - 1] == 'X')
+			total = total - 20;
+
+		else if (roman1[i] == 'D' && roman1[i - 1] == 'C')
+			total = total - 200;
+
+		else if (roman1[i] == 'M' && roman1[i - 1] == 'C')
+			total = total - 200;
+
+		else total = total - 0;
+
+	}
+
+	return (total);
+}
+
+int main()
+{
+	string roman1;
+	int total, check;
+	
+//get roman numeral input
+	cout << "The Roman numeral whose decimal value you want to know? ";
+	cin >> roman1;
+
+	check = romancheck(roman1);
+
+	if (check == 0)
+	{
+		total = sumromannum(roman1);
+
+		total = subromannum(roman1, total);
+
+		cout << "Roman numeral in decimal form " << roman1 << " is " << total << endl;	//result for a correct roman numeral input
+	}
+
+	else if (check > 0)
+		cout << "Wrong " << check << " Roman Numerals Entered!!!Check the input." << endl; //result for a wrong charcters entered
+
+	else cout << "Error!!! Check again"; //just a error for anything else
+
+	return 0;
+}
+
+
+
+
+
+/*
+This program that asks the user for the dimensions of a car tyre and calculates the tire's diameter and rolling circle based on them.
+*/
+
+#include <iostream>
+#include <iomanip> 
+#include <cmath>
+
+using namespace std;
+
+float coefficient = 3.048; 
+/* here changed the coefficient as 3.048 instead of 3.049, of the tyre bacause
+the final output not matched with the required answers in VIOPE. 
+This was happened due to an error of given coefficient value of 3.049.*/
+
+float calcTyreDiameter(float width, float height, float rim)
+{
+    float diameter = ((25.4 * rim) + (2 * width * height / 100)) / 10;
+
+    //turn the value into one decimal number.
+    diameter = (round(diameter * 10)) / 10;
+
+    return (diameter);
+}
+
+float calcTyrecircle(float width, float height, float rim)
+{
+    float diameter = calcTyreDiameter(width, height, rim);
+
+    float circle = coefficient * diameter;
+
+    //turn the value into one decimal number.
+    circle = (round(circle * 10)) / 10;
+
+    return (circle);
+}
+
+int main()
+{
+    float width, height, rim;
+
+
+    cout << "Enter the width of the tire in millimeters: " << endl;
+    cin >> width;
+
+    cout << "Enter the tire height profile as a percentage of the width: " << endl;
+    cin >> height;
+
+    cout << "Enter the rim diameter in inches: " << endl;
+    cin >> rim;
+
+  
+    cout << "The tire diameter is " << calcTyreDiameter(width, height, rim) << " centimeters." << endl;
+    cout << "The rolling circle of the tire is " << calcTyrecircle(width, height, rim) << " centimeters." << endl;
+
+    return 0;
+}
+
+
+
+
+
+
+/*
+This is a Lotto program with 2 subprograms,
+in which 7 lottery numbers and 3 reserve numbers are drawn in the second.
+In the second subprogram, the numbers are checked and the results and
+winning amounts are announced according to the attached table.
+The accompanying texts also in the program!
+Added an optional addition for Entering your own numbers to the program.
+*/
+
+
+#include <iostream>
+#include <iomanip>
+#include <ctime>
+
+using namespace std;
+
+
+/*
+In this function the computer randomly selected the random drawn numbers and winning numbers and
+1.Random drawn numbers are assigned to the "randLot[]" array.
+2.Winning numbers are assigned to the "winLot[]" array.
+3.Avoided repeated values in same draw of both random and winning draws.
+***But this function will not be used in the program because VIOPE requires only manually entered values.***
+*/
+void randLotteryNum(int numbers, int randLot[], int winLot[], int max) //  2: Play on the line drawn by the machine
+{
+	srand(time(0));
+	for (int i = 0; i < numbers; i++)
+
+	{
+		randLot[i] = rand() % max + 1;
+	}
+
+	for (int i = 0; i < numbers; i++)
+
+	{
+		winLot[i] = rand() % max + 1;
+	}
+	srand(1);
+
+	for (int i = 0; i < numbers; i++)
+	{
+		for (int j = i + 1; j < numbers; j++)
+		{
+			if (randLot[i] == randLot[j])
+			{
+				randLot[j] = rand() % max + 1;
+				i = 0;
+				j = i + 1;
+			}
+		}
+
+	}
+
+	for (int i = 0; i < numbers; i++)
+	{
+		for (int j = i + 1; j < numbers; j++)
+		{
+			if (winLot[i] == winLot[j])
+			{
+				winLot[j] = rand() % max + 1;
+				i = 0;
+				j = i + 1;
+			}
+		}
+
+	}
+
+}
+
+
+void userManualNum(int numbers, int randLot[])
+{
+	for (int i = 0; i < (numbers - 3); i++)
+	{
+		cout << "Enter Lottery Number " << i + 1 << " :  ";
+		cin >> randLot[i];
+		cout << endl;
+	}
+
+	for (int i = 7; i < numbers; i++)
+	{
+		cout << "Enter Bonus Number " << i - 6 << " :  ";
+		cin >> randLot[i];
+		cout << endl;
+	}
+}
+
+/*
+In this function the random drawn numbers or user manually entered numbers are matching with
+winning numbers which are randomly selected by computer.
+And then give the outputs of
+1.Computer drawn numbers list or User manually entered list
+2.Winning numbers list
+*/
+void checkWin(int numbers, int randLot[], int winLot[])
+{
+	int win1 = 0, win2 = 0, prize = 0;
+
+	for (int i = 0; i < (numbers - 3); i++)
+	{
+		if (randLot[i] == winLot[i])
+		{
+			win1++;
+		}
+	}
+
+	for (int i = 7; i < numbers; i++)
+	{
+		if (randLot[i] == winLot[i])
+		{
+			win2 = 1;
+		}
+	}
+
+	cout << "Your lottery numbers are:  " << randLot[0];
+
+	for (int i = 1; i < (numbers - 3); i++)
+	{
+		cout << ", " << randLot[i];
+	}
+
+	cout << ", and extra numbers:  " << randLot[7];
+
+	for (int i = 8; i < numbers; i++)
+	{
+		cout << ", " << randLot[i];
+	}
+
+	cout << "." << endl;
+
+	cout << "And winning numbers are:  " << winLot[0];
+
+	for (int i = 1; i < (numbers - 3); i++)
+	{
+		cout << ", " << winLot[i];
+	}
+
+	cout << ", and extra numbers:  " << winLot[7];
+
+	for (int i = 8; i < numbers; i++)
+	{
+		cout << ", " << winLot[i];
+	}
+
+	cout << "." << endl;
+
+	//below here the winning prices are selected by computer
+	cout << "Sait " << win1 << "+" << win2 << " oikein!" << endl;
+
+	if (win1 == 7)
+		prize = 10000000;
+
+	else if (win1 == 6 && win2 == 1)
+		prize = 1000000;
+
+	else if (win1 == 6)
+		prize = 100000;
+
+	else if (win1 == 5)
+		prize = 2000;
+
+	else if (win1 == 4)
+		prize = 50;
+
+	else if (win1 == 3 && win2 == 1)
+		prize = 10;
+
+	else if (win1 == 2 || win1 == 3)
+		prize = 2;
+
+	else if (win1 == 1)
+		prize = 1;
+
+	else
+		prize = 0;
+
+	if (prize > 0)
+	cout << "You won " << prize << " euros!" << endl;
+}
+
+// This is the main function and all sub functions are called by this.
+int main()
+
+{
+	int choice;
+	const int numbers = 10;
+	int randLot[numbers] = { 39, 28, 36, 23, 13, 35, 1, 17, 20, 9 }; // here values entered for the VIOPE
+	int winLot[numbers] = { 37, 37, 2, 18, 22, 13, 30, 36, 36, 38 }; // here values entered for the VIOPE
+	int max = 10;
+
+	cout << "Welcome to the easy lottery, winning is easy!\n" << endl;
+
+
+	while (choice = 4)
+	{
+		//Program menu
+		cout<< "What would you like to do? (Enter number 1-4)"
+			<< "\n1: See prize amounts"
+			<< "\n2: Play on the line drawn by the machine"
+			<< "\n3: Play with your own numbers"
+			<< "\n4: Stop playing" << endl;
+
+		cin >> choice;
+		cout << endl;
+
+		switch (choice)
+		{
+		case 1:   //  1: See prize amounts
+
+			cout << left
+				<< setw(36) << "Numbers + additional numbers" << "Winning money"
+				<< setw(37) << "\n7" << "10 000 000 e"
+				<< setw(37) << "\n6 + 1" << "1 000 000 e"
+				<< setw(37) << "\n6" << "100 000 e"
+				<< setw(37) << "\n5" << "2000 e"
+				<< setw(37) << "\n4" << "50 e"
+				<< setw(37) << "\n3 + 1" << "10 e"
+				<< setw(37) << "\n2" << "2 e"
+				<< setw(37) << "\n1" << "1 e"
+				<< "\n--------------------------------------------------------------------------------\n" << endl;
+
+			break;
+
+
+		case 2:   //  2: Play on the line drawn by the machine
+
+			//randLotteryNum(numbers, randLot, winLot, max); //disabled for VIOPE
+			checkWin(numbers, randLot, winLot);
+
+			break;
+
+
+		case 3:  //  3: Play with your own numbers
+
+			//randLotteryNum(numbers, randLot, winLot, max); //disabled for VIOPE
+			userManualNum(numbers, randLot);
+			checkWin(numbers, randLot, winLot);
+
+			break;
+
+		case 4:  //  4: Stop playing
+
+			cout << "--------------------------------------------------------------------------------\n" << endl;
+			cout << "Welcome again.";
+			return 0;
+
+			break;
+
+		default:
+			cout << "You've entered a wrong number!!! try again" << endl;
+
+		}
+	}
+
+	return 0;
+}

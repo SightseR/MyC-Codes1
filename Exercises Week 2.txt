@@ -1,0 +1,122 @@
+/* This program is a Triangle surface area calculator
+ that gives out the area of a triangle in square meters.*/
+
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    float base, height, area;
+
+    cout << "Give the base of the triangle in meters: " << endl;
+    cin >> base;
+
+    cout << "Give the height of the triangle in meters:" << endl;
+    cin >> height;
+
+    area = (base * height) / 2;
+
+
+    cout << "The area is:" << area << " square meters." << endl;
+
+    return 0;
+}
+
+
+/* this programme calculates amount of interest. 
+Program asks the amount of loan, yearly interest rate and loan time. 
+After this, the program tells the user the amount of interest 
+cumulates during the loan time. */
+
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    long amount;
+    float years;
+    float rate, interest;
+
+    cout << "Give the amount of loan:" << endl;
+    cin >> amount;
+
+    cout << "interest rate:" << endl;
+    cin >> rate;
+
+    cout << "Loan duration in years:" << endl;
+    cin >> years;
+
+    interest = (amount * years * rate)/100;
+
+   
+    cout << "The amount of interest will be: " << interest << " euros" << endl;
+	
+	return 0;
+}
+
+
+
+/* This program asks the height of two people and then tells which one is taller */
+
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    float firstp, secondp;
+
+    cout << "Input the height of the first person : " << endl;
+    cin >> firstp;
+
+    cout << "Input the height of the second person : " << endl;
+    cin >> secondp;
+
+ 
+        if (firstp == secondp)
+        	cout << "The height of both persons are equal!!!" << endl;
+
+        else if (firstp < secondp)
+        	cout << "The second person is taller" << endl;
+
+        else
+        	cout << "The first person is taller" << endl;
+        
+    return 0;
+}
+
+
+
+/* This program determines the whether four people can use the elevator. */
+
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    float ele1, man1, man2, man3, man4;
+
+        cout << "Insert carrying capacity if the elevator: " << endl;
+        cin >> ele1;
+
+        cout << "Insert the weight of the person number 1: " << endl;
+        cin >> man1;
+
+        cout << "Insert the weight of the person number 2: " << endl;
+        cin >> man2;
+
+        cout << "Insert the weight of the person number 3: " << endl;
+        cin >> man3;
+
+        cout << "Insert the weight of the person number 4: " << endl;
+        cin >> man4;
+
+        if (man1 + man2 + man3 + man4 > ele1)
+            cout << "Overload, do not use the elevator!" << endl;
+
+        else
+            cout << "Elevator at your disposal." << endl;
+
+    return 0;
+}
+
+

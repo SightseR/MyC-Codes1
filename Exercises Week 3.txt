@@ -1,0 +1,202 @@
+
+/* This program asks the user the price of petrol, price of diesel, 
+petrol consumption (liters/100km), diesel consumption (liters/100km), 
+diesel tax and driven kilometers per year. 
+After this the program tells how much it costs to use 
+petrol car and diesel car per year and which is cheaper to use. */
+
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    float pet, die, petcons, diecons, dietax, km, costp, costd;
+
+        cout << "How much does the petrol cost in Euro/liter? " << endl;
+        cin >> pet;
+
+        cout << "How much does the diesel cost in Euro/liter? " << endl;
+        cin >> die;
+
+        cout << "How much is the petrol consumption (liters/100km)? " << endl;
+        cin >> petcons;
+
+        cout << "How much is the diesel consumption (liters/100km)? " << endl;
+        cin >> diecons;
+
+        cout << "How much is the diesel tax in Euro/liter? " << endl;
+        cin >> dietax;
+
+        cout << "How many kilometers does the car drive per year? " << endl;
+        cin >> km;
+
+        costp = (km * petcons * pet)/100;
+        costd = ((km * diecons * die) / 100) + dietax;
+
+        if (costp < costd)
+        {
+            cout << "It costs " << costp << " Euros to use a petrol car." << endl;
+            cout << "It costs " << costd << " Euros to use a diesel car." << endl;
+            cout << "It is cheaper to use the petrol car." << endl;
+        }
+
+        else if (costd < costp)
+        {
+            cout << "It costs " << costp << " Euros to use a petrol car." << endl;
+            cout << "It costs " << costd << " Euros to use a diesel car." << endl;
+            cout << "It is cheaper to use the diesel car." << endl;
+        }
+
+        else
+        {
+            cout << "It costs " << costp << " Euros to use a petrol car." << endl;
+            cout << "It costs " << costd << " Euros to use a diesel car." << endl;
+            cout << "The cost of of both petrol and diesel are same. Use any car!" << endl;
+        }
+
+
+    return 0;
+}
+
+
+
+
+/* This program asks three (3) numbers and then tells which number was the biggest. */
+
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    float a, b, c;
+
+    cout << "Enter first Number: " << endl;
+    cin >> a;
+
+    cout << "Entr second Number: " << endl;
+    cin >> b;
+
+    cout << "Enter third Number: " << endl;
+    cin >> c;
+
+    if ((a == b) && (b == c))
+        cout << "Number 1 , 2 and 3 are same." << endl;
+
+    else if ((a == b) && (a > c))
+        cout << "Number 1 and 2 are the biggest." << endl;
+
+    else if ((b == c) && (b > a))
+        cout << "Number 2 and are 3 the biggest." << endl;
+
+    else if ((a == c) && (a > b))
+        cout << "Number 1 and 3 are the biggest." << endl;
+
+    else if (((a == b) && (a < c)) || ((c > b) && (c > a)))
+        cout << "Number 3 is the biggest." << endl;
+
+    else if (((a == c) && (a < b)) || ((b > a) && (b > c)))
+        cout << "Number 2 is the biggest." << endl;
+
+    else // (((b == c) && (b < a)) || ((a > b) && (a > c)))
+        cout << "Number 1 is the biggest." << endl;
+
+   
+    return 0;
+}
+
+
+
+
+/* This program asks the weight of a letter. 
+Then the program tells how much it costs to send the letter domestically. */
+
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    float 
+        letter;
+    string 
+        p1 = "0,60",
+        p2 = "0,90",
+        p3 = "1,30",
+        p4 = "2,10",
+        p5 = "3,50",
+        p6 = "5,50";
+
+    cout << "What is the weight of the letter in grams? " << endl;
+    cin >> letter;
+
+    if (letter <= 50)
+        cout << "It costs " << p1 << " Euro to send the letter." << endl;
+
+    else if (letter <= 100)
+        cout << "It costs " << p2 << " Euro to send the letter." << endl;
+
+    else if (letter <= 250)
+        cout << "It costs " << p3 << " Euro to send the letter." << endl;
+
+    else if (letter <= 500)
+        cout << "It costs " << p4 << " Euro to send the letter." << endl;
+
+    else if (letter <= 1000)
+        cout << "It costs " << p5 << " Euro to send the letter." << endl;
+
+    else if (letter <= 2000)
+        cout << "It costs " << p6 << " Euro to send the letter." << endl;
+
+    else // (letter > 2000)
+        cout << "Letter weight is more than 2000g. Contact administration!!!" << endl;
+
+    return 0;
+}
+
+
+
+
+/* This program asks which calculation to perform (+ - / or *) and two numbers. 
+Based on the calculation character 
+program prints out the sum, subtraction, division, or multiplication.*/
+
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    string calc;
+
+    float  a, b, sum, sub, div, pro;
+
+    cout << "What is the calculation character (+,-,/,*)? " << endl;
+    cin >> calc;
+
+    cout << "What is the first number? " << endl;
+    cin >> a;
+
+    cout << "What is the second number? " << endl;
+    cin >> b;
+
+    sum = a + b;
+    sub = a - b;
+    div = a / b;
+    pro = a * b;
+
+
+    if (calc == "+")
+        cout << "The sum of those numbers is: " << sum << endl;
+
+    else if (calc == "-")
+        cout << "The subtraction of those numbers is: " << sub << endl;
+
+    else if (calc == "/")
+        cout << "The division of those numbers is: " << div << endl;
+
+    else if (calc == "*")
+        cout << "The product of those numbers is: " << pro << endl;
+        
+    else
+        cout << "Error in calculation!!!" << endl;
+
+    return 0;
+}

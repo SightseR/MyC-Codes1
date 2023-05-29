@@ -1,0 +1,83 @@
+// Week 1 exercise 1 
+/* This program prints onto the screen  the  following text:
+To be or not to be,
+That is the problem */
+
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    cout << "To be or not to be," << endl;
+    cout << "That is the problem"<< endl;
+	return 0;
+}
+
+
+
+/* This program asks the user an integer, then tells the user which number it typed. For example:
+Type an integer: 30
+You typed number: 30*/
+
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int number;
+
+    cout << "Type an integer: ";
+    cin >> number;
+    cout << "You typed number " << number << endl;
+	return 0;
+}
+
+
+/* This program asks the user his/her age, and then tells his/her age in 50 years time. For example:
+Give your age? 23
+After 50 years you will be 73 years old.*/
+
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int age, age2;
+
+    cout << "Give your age? " << endl;
+    cin >> age;
+    age2 = age + 50;
+    cout << "After 50 years you will be  " << age2 << " years od." << endl;
+	return 0;
+}
+
+
+/* This program asks the user two number and then tells the user their subtraction and product. For example:
+Give the first number: 5
+Give the second number: 3
+Subtraction of those numbers is 2.
+Product of those numbers is 15.*/
+
+
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    float number1, number2, sub, prod;
+
+    cout << "Give the first number: " << endl;
+    cin >> number1;
+
+    cout << "Give the second number: " << endl;
+    cin >> number2;
+
+    sub = number1 - number2;
+
+    prod = number1 * number2;
+
+
+    cout << "Subtraction of those numbers is " << sub << "." << endl;
+    cout << "Product of those numbers is " << prod << "." << endl;
+    return 0;
+}

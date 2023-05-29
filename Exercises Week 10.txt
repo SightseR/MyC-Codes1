@@ -1,0 +1,325 @@
+/* This program ask the user for values in the student data. Finally, print the student information
+*/
+
+#include <iostream>
+#include <string>
+using namespace std;
+
+struct student
+	{
+		string studentFname, studentLname, studentNum;
+		int studentCredit;
+	};
+
+int main()
+{
+	student st1;
+	
+	//get inputs of student
+	cout << "Enter first name: ";
+	getline(cin, st1.studentFname);
+	cout << '\n';
+
+	cout << "Enter last name: ";
+	getline(cin, st1.studentLname);
+	cout << '\n';
+
+	cout << "Enter student number: ";
+	cin >> st1.studentNum;
+	cout << '\n';
+
+	cout << "Enter student's credits: ";
+	cin >> st1.studentCredit;
+	cout << '\n';
+
+	//print output values
+	cout << "Student's info:" << endl << endl;
+
+	cout << "First Name: " << st1.studentFname << endl;
+	cout << "Last Name: " << st1.studentLname << endl;
+	cout << "Student Number: " << st1.studentNum << endl;
+	cout << "Student Credits: " << st1.studentCredit << endl;
+
+	return 0;
+}
+
+
+
+
+/* This program ask the user for country information and finally print the information on the screen.
+*/
+
+#include <iostream>
+#include <string>
+using namespace std;
+
+struct State
+{
+	string stName;
+	int  stPopulation;
+	int stArea;
+	string stLeader;
+};
+
+
+//print the outputs of state 1 & 2
+void printstateinfo(string stName, int stPopulation, int stArea, string stLeader)
+{
+	cout << "State name: " << stName << endl;
+	cout << "Population: " << stPopulation << endl;
+	cout << "Area: " << stArea << endl;
+	cout << "Leader Name: " << stLeader << endl << endl;
+}
+
+int main()
+{
+	
+	State state1, state2;
+
+	//Input State 1
+
+	cout << "Insert the name of the 1. state: ";
+	getline(cin, state1.stName);
+	cout << '\n';
+
+	cout << "Insert the population: ";
+	cin >> state1.stPopulation;
+	cout << '\n';
+
+	cout << "Insert the area: ";
+	cin >> state1.stArea;
+	cout << '\n';
+
+	cout << "Insert the leader's name: ";
+	cin.ignore();
+	getline(cin, state1.stLeader);
+	cout << '\n';
+	cout << '\n';
+
+
+	//Input State 2
+
+	cout << "Insert the name of the 2. state: ";
+	getline(cin, state2.stName);
+	cout << '\n';
+
+	cout << "Insert the population: ";
+	cin >> state2.stPopulation;
+	cout << '\n';
+
+	cout << "Insert the area: ";
+	cin >> state2.stArea;
+	cout << '\n';
+
+	cout << "Insert the leader's name: ";
+	cin.ignore();
+	getline(cin, state2.stLeader);
+	cout << '\n';
+	cout << '\n';
+
+
+	//Output state 1
+	cout << "State 1 Information" << endl;
+	printstateinfo(state1.stName, state1.stPopulation, state1.stArea, state1.stLeader);
+
+	//Output state 2
+	cout << "State 2 Information" << endl;
+	printstateinfo(state2.stName, state2.stPopulation, state2.stArea, state2.stLeader);
+
+
+	return 0;
+}
+
+
+
+
+/* 
+This program ask the user for country information for five states and finally print the contents of the table on the screen.
+*/
+
+#include <iostream>
+#include <string>
+using namespace std;
+
+struct State
+{
+	string stName;
+	int  stPopulation;
+	int stArea;
+	string stLeader;
+};
+
+
+//Print the information of states
+void printstateinfo(string stName, int stPopulation, int stArea, string stLeader)
+{
+	cout << "State name: " << stName << endl;
+	cout << "Population: " << stPopulation << endl;
+	cout << "Area: " << stArea << endl;
+	cout << "Leader Name: " << stLeader << endl << endl;
+}
+
+int main()
+{
+	const int st = 5;
+	State state[st];
+
+	//Input State information
+	for (int i = 0; i < st; i++)
+
+	{
+		cout << "Insert the name of the " << i + 1 << ". state: ";
+		getline(cin, state[i].stName);
+		cout << '\n';
+
+		cout << "Insert the population: ";
+		cin >> state[i].stPopulation;
+		cout << '\n';
+
+		cout << "Insert the area: ";
+		cin >> state[i].stArea;
+		cout << '\n';
+
+		cout << "Insert the leader's name: ";
+		cin.ignore();
+		getline(cin, state[i].stLeader);
+		cout << '\n';
+		cout << '\n';
+	}
+
+
+	//Output information of states
+	for (int j = 0; j < st; j++)
+	{
+		cout << "State " << j + 1 << " Information" << endl;
+		printstateinfo(state[j].stName, state[j].stPopulation, state[j].stArea, state[j].stLeader);
+	}
+
+	return 0;
+}
+
+
+
+
+/*
+This program prints the student information in the function.
+*/
+
+#include <iostream>
+#include <string>
+using namespace std;
+
+//structure of student data
+struct Student
+{
+	string fName;
+	string lName;
+	int stNum;
+	int stCrdt;
+};
+
+//print output of student information
+void printStudentInformation(string fName, string lName, int stNum, int stCrdt)
+{
+	cout << "First Name: " << fName << endl;
+	cout << "Last Name: " << lName << endl;
+	cout << "Student Number: " << stNum << endl;
+	cout << "Student Credits: " << stCrdt << endl;
+}
+
+int main()
+{
+	const int students = 1;
+	Student st[students];
+
+	//Input data of the student
+	for (int i = 0; i < students; i++)
+	{
+		cout << "Enter first name: ";
+		getline(cin, st[i].fName);
+		
+		cout << "\nEnter last name: ";
+		getline(cin, st[i].lName);
+
+		cout << "\nEnter student number: ";
+		cin >> st[i].stNum;
+
+		cout << "\nEnter student's credits: ";
+		cin >> st[i].stCrdt;
+
+	}
+
+	//output of the student information
+	for (int j = 0; j < students; j++)
+	{
+		cout << "\nStudent's info:\n" << endl;
+
+		printStudentInformation(st[j].fName, st[j].lName, st[j].stNum, st[j].stCrdt);
+	}
+
+
+
+	return 0;
+}
+
+
+
+
+/*
+This program asks the user for the student information within the function and
+returns the completed student with the data as the return value.
+*/
+
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+//Structure of student information
+struct Student {
+    string firstName;
+    string lastName;
+    string number;
+    float credits;
+};
+
+//input student data
+Student CreateStudent()
+{
+    Student Student;
+
+    cout << "Enter first name: ";
+    cin >> Student.firstName;
+
+    cout << "\nEnter last name: ";
+    cin >> Student.lastName;
+
+    cout << "\nEnter student number: ";
+    cin >> Student.number;
+
+    cout << "\nEnter student's credits: ";
+    cin >> Student.credits;
+
+    return Student;
+}
+
+int main()
+{
+
+    Student Student1 = CreateStudent();
+
+	
+	//print student information
+    cout << "\nStudent's info:" << endl;
+
+    cout << "\nFirst Name: " << Student1.firstName << endl;
+    cout << "Last Name: " << Student1.lastName << endl;
+    cout << "Student Number: " << Student1.number << endl;
+    cout << "Student Credits: " << Student1.credits << endl;
+
+    return 0;
+}
+
+
+
+

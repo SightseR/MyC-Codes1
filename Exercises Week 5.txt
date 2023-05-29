@@ -1,0 +1,125 @@
+/* This  program prints to the screen all the even number from 1 to 50.  */
+
+#include <iostream>
+using namespace std;
+
+int main()
+{
+	int
+		n = 0,
+		m = 51;
+
+	while (n < m)
+
+	{
+		if (n % 2 == 0)
+
+		{
+			cout << n << " ";
+			++n;
+		}
+
+		else
+		{
+			++n;
+		}
+
+	}
+
+	return 0;
+}
+
+
+
+/* This program that asks numbers from the user until user enter 0. 
+Finally the program sums the given numbers */
+
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    float a, b=0;
+
+    cout << "Please enter numbers:" << endl;
+
+    do
+    {
+        cin >> a;
+        b = b + a;
+    } while (a != 0);
+
+    cout << "Sum of the given numbers is " << b << endl;
+
+    return 0;
+
+}
+
+
+
+/* This program that counts the total score in ski jump competition. */
+
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    float total, length, j1, j2, j3, j4, j5;
+
+    cout << "Give the lenght of the jump:" << endl;
+    cin >> length;
+
+    cout << "Points judge 1:" << endl;
+    cin >> j1;
+
+    cout << "Points judge 2:" << endl;
+    cin >> j2;
+
+    cout << "Points judge 3:" << endl;
+    cin >> j3;
+
+    cout << "Points judge 4:" << endl;
+    cin >> j4;
+
+    cout << "Points judge 5:" << endl;
+    cin >> j5;
+
+    total = (length * 0.9) + j1 + j2 + j3 + j4 + j5;
+
+    cout << "Total score is: " << total << endl;
+
+    return 0;
+
+}
+
+
+
+/* This program that prints the following sequences:
+1 2 3 4 5 6 7 8 9 10
+2, 4, 6, 8, 10, 12, 14, 16, 18, 20,
+*/
+
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int a, b;
+
+    for (a = 1; a <= 10; a++)
+    
+        cout << a << " ";
+    
+    cout << endl;
+
+    for (b = 1; b <= 10; b++)
+
+        cout << b * 2 << ", ";
+
+    return 0;
+
+}
+
+
+
+

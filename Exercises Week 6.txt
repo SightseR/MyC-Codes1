@@ -1,0 +1,173 @@
+/* This program with a void () subroutine that prints the desired number of characters on
+the screen.
+*/
+
+#include <iostream>
+using namespace std;
+
+void printch(int ch, char letter)
+{
+    for (int i = 1; i <= ch; i++)
+
+        cout << letter;
+}
+
+int main()
+{
+    int ch;
+    char letter;
+
+    cout << "How many characters are printed?" << endl;
+    cin >> ch;
+
+    cout << "What character is printed?" << endl;
+    cin >> letter;
+
+    cout << "Character " << letter << " printed 5 times." << endl;
+    printch(ch, letter);
+
+    return 0;
+}
+
+
+
+
+/* This is a factorial program with a subroutine that has no recursion.
+*/
+
+#include <iostream>
+using namespace std;
+
+void printfactorial(int n)
+{
+    int b = 1;
+	
+    for (int i = 1; i <= n; i++)
+    {
+        b = b * i;
+    }
+
+    cout << "Factorial of a number is: " << b << endl;
+
+}
+
+int main()
+{
+    int n;
+
+    cout << "Give me any integer number between 0-15 :" << endl;
+	
+    cin >> n;
+
+    printfactorial(n);
+
+    return 0;
+}
+
+
+
+
+/* program with a subroutine that calculates the volume of a rectangular prism.
+*/
+
+#include <iostream>
+using namespace std;
+
+void printvolume(int h,int w, int d)
+{
+    int v;
+
+    v = h * w * d;
+
+    cout << "Rectangular prism volume is: " << v << endl;
+
+}
+
+int main()
+{
+    int h, w, d;
+
+    cout << "Give me rectangular prism height, width, and depth? :" << endl;
+
+    cin >> h;
+    cin >> w;
+    cin >> d;
+
+    printvolume(h, w, d);
+
+    return 0;
+}
+
+
+
+
+/* This program with a subroutine that checks a person’s adolescence.
+*/
+
+#include <iostream>
+using namespace std;
+
+void printadolescence(int age)
+{
+    if (age >= 13 && age <= 19)
+
+        cout << "A person is a teenager " << endl;
+    else if (age < 13)
+        cout << "A person is a child" << endl;
+    else
+        cout << "A person is a adult" << endl;
+}
+
+int main()
+{
+    int age;
+
+    cout << "Give me a person age? :" << endl;
+    cin >> age;
+
+    printadolescence(age);
+
+    return 0;
+}
+
+
+
+
+/*This program that contains a recursion subroutine that calculates and 
+\prints the members of the Fibonacci read string up to the number specified by the user.
+*/
+
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int n, a =0, b = 1, c;
+
+    cout << "Enter the number of elements 2-100: ";
+    cin >> n;
+
+    if (n <= 0)
+        cout << "Error!, enter a value equal or greater than 2" << endl;
+
+    else if (n == 1)
+        cout << "Fibonacci Series: " << a << endl;
+
+    else if (n == 2)
+        cout << "Fibonacci Series: " << a << " " << b;
+
+    else
+        cout << "Fibonacci Series: " << a << " " << b;
+        for (int i = 2; i < n; i++)
+        {
+            c = a + b;
+            cout << " " << c;
+            a = b;
+            b = c;
+        }
+
+    return 0;
+}
+
+
+
